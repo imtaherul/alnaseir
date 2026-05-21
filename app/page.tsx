@@ -20,11 +20,11 @@ export default function Home() {
         <main>
           {/* <Hero /> */}
           <HeroSection />
+          <PartnersSection />
           <WhatValueSection />
           <BusinessSetupTwo />
           <PremiumResidencyBannerTwo />
           <ServicesSectionTwo />
-          <PartnersSection />
           <LatestNews />
           <Contact />
           <ContactButtons />
