@@ -1,23 +1,23 @@
-'use client';
+"use client";
 
-import { useLanguage } from '@/contexts/language-context';
-import { Facebook, Twitter, Linkedin, Instagram } from 'lucide-react';
+import { useLanguage } from "@/contexts/language-context";
+import { Facebook, Twitter, Linkedin, Instagram } from "lucide-react";
 
 export function Footer() {
   const { t, locale } = useLanguage();
 
   const navItems = [
-    { href: '#home', label: t.nav.home },
-    { href: '#about', label: t.nav.about },
-    { href: '#services', label: t.nav.services },
-    { href: '#contact', label: t.nav.contact },
+    { href: "#home", label: t.nav.home },
+    { href: "#about", label: t.nav.about },
+    { href: "#services", label: t.nav.services },
+    { href: "#contact", label: t.nav.contact },
   ];
 
   const socialLinks = [
-    { icon: Facebook, href: '#', label: 'Facebook' },
-    { icon: Twitter, href: '#', label: 'Twitter' },
-    { icon: Linkedin, href: '#', label: 'LinkedIn' },
-    { icon: Instagram, href: '#', label: 'Instagram' },
+    { icon: Facebook, href: "#", label: "Facebook" },
+    { icon: Twitter, href: "#", label: "Twitter" },
+    { icon: Linkedin, href: "#", label: "LinkedIn" },
+    { icon: Instagram, href: "#", label: "Instagram" },
   ];
 
   return (
@@ -28,11 +28,15 @@ export function Footer() {
           <div className="lg:col-span-1">
             <div className="flex items-center gap-2 mb-4">
               <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
-                <span className="text-primary-foreground font-bold text-xl">A</span>
+                <span className="text-primary-foreground font-bold text-xl">
+                  A
+                </span>
               </div>
               <div>
                 <span className="font-bold text-lg">Al Naseir</span>
-                <span className="block text-xs text-muted-foreground -mt-1">Business Solutions</span>
+                <span className="block text-xs text-muted-foreground -mt-1">
+                  Business Solutions
+                </span>
               </div>
             </div>
             <p className="text-sm text-muted-foreground leading-relaxed">
@@ -88,7 +92,8 @@ export function Footer() {
         {/* Bottom Bar */}
         <div className="mt-12 pt-8 border-t border-background/10">
           <p className="text-center text-sm text-muted-foreground">
-            © {new Date().getFullYear()} Al Naseir Business Solutions. {t.footer.rights}
+            © {new Date().getFullYear()} Al Naseir Business Solutions.{" "}
+            {t.footer.rights}
           </p>
         </div>
       </div>

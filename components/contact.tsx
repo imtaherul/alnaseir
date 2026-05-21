@@ -1,11 +1,13 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import { useLanguage } from '@/contexts/language-context';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
-import { MapPin, Phone, Mail, Send, MessageCircle } from 'lucide-react';
+import { useState } from "react";
+import { useLanguage } from "@/contexts/language-context";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { MapPin, Phone, Mail, Send, MessageCircle } from "lucide-react";
+import { ContactButtonGroup } from "./home/contact-button-group-flat";
+import { SaudiLogo, StarShape } from "./shape-svg";
 
 export function Contact() {
   const { t, dir, locale } = useLanguage();
@@ -17,7 +19,13 @@ export function Contact() {
     // Simulate form submission
     await new Promise((resolve) => setTimeout(resolve, 1500));
     setIsSubmitting(false);
-    alert(locale === 'ar' ? 'تم إرسال رسالتك بنجاح!' : locale === 'bn' ? 'আপনার বার্তা সফলভাবে পাঠানো হয়েছে!' : 'Your message has been sent successfully!');
+    alert(
+      locale === "ar"
+        ? "تم إرسال رسالتك بنجاح!"
+        : locale === "bn"
+          ? "আপনার বার্তা সফলভাবে পাঠানো হয়েছে!"
+          : "Your message has been sent successfully!",
+    );
   };
 
   const contactInfo = [
@@ -26,20 +34,23 @@ export function Contact() {
       label: t.contact.address,
       value: t.contact.addressText,
     },
-    {
-      icon: Phone,
-      label: t.contact.phoneLabel,
-      value: '+971 4 XXX XXXX',
-    },
-    {
-      icon: Mail,
-      label: t.contact.emailLabel,
-      value: 'info@alnaseir.com',
-    },
+    // {
+    //   icon: Phone,
+    //   label: t.contact.phoneLabel,
+    //   value: "+971 4 XXX XXXX",
+    // },
+    // {
+    //   icon: Mail,
+    //   label: t.contact.emailLabel,
+    //   value: "info@alnaseir.com",
+    // },
   ];
 
   return (
-    <section id="contact" className="py-20 md:py-32 bg-secondary/30">
+    <section id="contact" className="relative z-10 py-10 md:py-10 ">
+      <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_30%_50%,rgba(16,185,129,0.08),transparent_50%)]" />
+      <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_70%_80%,rgba(59,130,246,0.06),transparent_50%)]" />
+
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
@@ -67,7 +78,9 @@ export function Contact() {
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid sm:grid-cols-2 gap-4">
                 <div className="space-y-2">
-                  <label className="text-sm font-medium">{t.contact.name}</label>
+                  <label className="text-sm font-medium">
+                    {t.contact.name}
+                  </label>
                   <Input
                     type="text"
                     required
@@ -76,7 +89,9 @@ export function Contact() {
                   />
                 </div>
                 <div className="space-y-2">
-                  <label className="text-sm font-medium">{t.contact.email}</label>
+                  <label className="text-sm font-medium">
+                    {t.contact.email}
+                  </label>
                   <Input
                     type="email"
                     required
@@ -88,15 +103,13 @@ export function Contact() {
 
               <div className="space-y-2">
                 <label className="text-sm font-medium">{t.contact.phone}</label>
-                <Input
-                  type="tel"
-                  placeholder={t.contact.phone}
-                  dir="ltr"
-                />
+                <Input type="tel" placeholder={t.contact.phone} dir="ltr" />
               </div>
 
               <div className="space-y-2">
-                <label className="text-sm font-medium">{t.contact.message}</label>
+                <label className="text-sm font-medium">
+                  {t.contact.message}
+                </label>
                 <Textarea
                   required
                   placeholder={t.contact.message}
@@ -105,7 +118,11 @@ export function Contact() {
                 />
               </div>
 
-              <Button type="submit" className="w-full gap-2" disabled={isSubmitting}>
+              <Button
+                type="submit"
+                className="w-full gap-2"
+                disabled={isSubmitting}
+              >
                 {isSubmitting ? (
                   <div className="w-5 h-5 border-2 border-primary-foreground border-t-transparent rounded-full animate-spin" />
                 ) : (
@@ -121,7 +138,7 @@ export function Contact() {
           {/* Contact Info */}
           <div className="space-y-8">
             {/* Info Cards */}
-            <div className="space-y-4">
+            {/* <div className="space-y-4">
               {contactInfo.map((info) => (
                 <div
                   key={info.label}
@@ -131,11 +148,33 @@ export function Contact() {
                     <info.icon className="h-5 w-5 text-primary" />
                   </div>
                   <div>
-                    <p className="font-semibold text-foreground">{info.label}</p>
+                    <p className="font-semibold text-foreground">
+                      {info.label}
+                    </p>
                     <p className="text-muted-foreground">{info.value}</p>
                   </div>
                 </div>
               ))}
+            </div> */}
+            <div className="space-y-4">
+              <div className="flex items-start gap-4 bg-card border border-border rounded-xl p-6">
+                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center shrink-0">
+                  <MapPin className="h-5 w-5 text-primary" />
+                </div>
+                <div>
+                  <p className="font-semibold text-foreground">
+                    {t.contact.address}
+                  </p>
+                  <p className="text-muted-foreground">
+                    {t.contact.addressText}
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div className="space-y-4">
+              <div className="flex items-start gap-6 bg-card border border-border rounded-xl p-6 pl-20">
+                <ContactButtonGroup />
+              </div>
             </div>
 
             {/* Map Placeholder */}
@@ -143,13 +182,17 @@ export function Contact() {
               <div className="w-full h-full bg-secondary flex items-center justify-center">
                 <div className="text-center">
                   <MapPin className="h-12 w-12 text-primary mx-auto mb-2" />
-                  <p className="text-muted-foreground">Business Bay, Dubai, UAE</p>
+                  <p className="text-muted-foreground">
+                    Business Bay, Dubai, UAE
+                  </p>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
+      <SaudiLogo className="absolute top-10 left-30 -translate-x-1/2 text-[#b4b4b41c] w-100" />
+      <StarShape className="absolute bottom-1 right-30 -translate-x-1/4 text-[#6a85821a] w-50" />
     </section>
   );
 }

@@ -9,7 +9,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Globe, Menu, X } from "lucide-react";
+import { CircleUserRound, Globe, LogIn, Menu, Search, X } from "lucide-react";
 import type { Locale } from "@/lib/translations";
 
 const languages: { code: Locale; name: string; flag: string }[] = [
@@ -32,8 +32,13 @@ export function Header() {
   const currentLanguage = languages.find((lang) => lang.code === locale);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border">
-      <div className="container mx-auto px-4">
+    <header className="pointer-events-auto fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border">
+      <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_30%_50%,rgba(16,185,129,0.08),transparent_50%)]" />
+      <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_70%_80%,rgba(59,130,246,0.06),transparent_50%)]" />
+
+      {/* Background Pattern */}
+
+      <div className="mx-auto w-full max-w-400 sm:max-w-screen-sm md:max-w-3xl lg:max-w-5xl">
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
           <a href="#home" className="flex items-center gap-2">
@@ -66,8 +71,26 @@ export function Header() {
           </nav>
 
           {/* Actions */}
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-4">
             {/* Language Switcher */}
+
+            <div>
+              <a
+                href="#"
+                className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+              >
+                <CircleUserRound className="h-6 w-6 font-bold" />
+              </a>
+            </div>
+            <div>
+              <a
+                href="#"
+                className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+              >
+                <Search className="h-6 w-6 font-bold" />
+              </a>
+            </div>
+
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button variant="outline" size="sm" className="gap-2">
